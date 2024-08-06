@@ -19,3 +19,5 @@ users = [User("Testuser", "testmail@mail.com"), User("User2", "user2@mail.com")]
 
 for user in users:
 	user.do_something()
+
+# start debug, and put breakpoints
