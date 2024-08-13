@@ -13,8 +13,9 @@ for i in matrix:
 		if succes:
 			message += value
 		else:
-			# print(i.index(value))
-			message += " "
-
+			index_value = i.index(value)	
+			old_value = i[index_value - 1]
+			if old_value.isalpha():
+				message += " "
 
 print(message)
