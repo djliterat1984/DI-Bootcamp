@@ -9,6 +9,7 @@ myList1.append(myList2)
 
 print(myList1)
 
+print("------------------------------------------------------------------------------")
 
 # Exercise 2: Range of numbers
 # Instructions
@@ -24,9 +25,9 @@ while i <= 2500:
 	
 	i += 1
 
-for n in number_list:
-	print(n)
+print(number_list)
 
+print("------------------------------------------------------------------------------")
 
 # Exercise 3: Check the index
 # Instructions
@@ -37,11 +38,13 @@ names = ['Samus', 'Cortana', 'V', 'Link', 'Mario', 'Cortana', 'Samus']
 # Ask a user for their name, if their name is in the names list print out the index of the first occurence of the name.
 # Example: if input is 'Cortana' we should be printing the index 1
 
-name = input("Give me your name")
+name = input("Give me your name: ")
 
 if name in names:
 	index = names.index(name)
 	print(index)
+
+print("------------------------------------------------------------------------------")
 
 # Exercise 4: Greatest Number
 # Instructions
@@ -70,7 +73,7 @@ else:
 	else:
 		print(f"The greatest number is: {number3}")
 		
-
+print("------------------------------------------------------------------------------")
 
 # Exercise 5: The Alphabet
 # Instructions
@@ -84,7 +87,9 @@ for l in alphabet:
 		print(f"{l} is vowel")
 	else:
 		print(f"{l} is consonant")
-		
+
+
+print("------------------------------------------------------------------------------")	
 
 # Exercise 6: Words and letters
 # Instructions
@@ -93,26 +98,34 @@ for l in alphabet:
 # Loop through the words list and print the index of the first appearence of the letter variable in each word of the list.
 # If the letter doesn’t exist in one of the words, print a friendly message with the word and the letter.
 
-str_words = input("Write 7 words and separate them with space")
+str_words = input("Write 7 words and separate them with space: ")
 words = []
 word = ""
+length_word = len(str_words)
+counter = 0
 
 for i in str_words:
+	counter += 1
 	if i == ' ':
 		words.append(word)
 		word = ""
+	elif counter == length_word:
+		word += i
+		words.append(word)
 	else:
 		word += i
 
 print(words)
 
-letter = input('Give me a sigle character')
+letter = input('Give me a sigle character: ')
 
 for w in words:
 	if w.__contains__(letter):
 		print(w.index(letter))
 	else:
 		print(f'Unfortunately the letter {letter} is not in the word {w}')
+
+print("------------------------------------------------------------------------------")
 
 # Exercise 7: Min, Max, Sum
 # Instructions
@@ -128,6 +141,7 @@ sum_numbers = 0
 total_sum = sum(range_numbers2)
 print(total_sum)
 	 
+print("------------------------------------------------------------------------------")
 
 # Exercise 8 : List and Tuple
 # Instructions
@@ -155,6 +169,8 @@ print(list_formatted)
 tuple_comma = tuple(list_formatted)
 print(tuple_comma)
 
+print("------------------------------------------------------------------------------")
+
 # Exercise 9 : Random number
 # Instructions
 # Ask the user to input a number from 1 to 9 (including).
@@ -164,7 +180,7 @@ print(tuple_comma)
 # Bonus: use a loop that allows the user to keep guessing until they want to quit.
 # Bonus 2: on exiting the loop tally up and display total games won and lost.
 
-r_number = int(input("Give me a number from 1 to 9"))
+r_number = int(input("Give me a number from 1 to 9: "))
 
 import random
 random_number = random.randrange(1,9)
