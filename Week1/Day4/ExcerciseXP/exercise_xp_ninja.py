@@ -116,7 +116,7 @@ unique_words = len(set(text.split(' ')))
 # 8
 characters_without_non_whitespaces = len(text.replace(" ", ""))
 
-print(f"This text has {characters} characters, {sentences} sentences, {words} words and {unique_words} unique words" )
+print(f"This text has {characters} characters, {sentences} sentences, {words} words, {unique_words} unique words and characters without non-whitespaces {characters_without_non_whitespaces}" )
 
 # Exercise 4 : Frequency Of The Words
 # Instructions
@@ -138,3 +138,17 @@ print(f"This text has {characters} characters, {sentences} sentences, {words} wo
 #     choosing:1
 #     or:2
 #     to:1
+
+text = "New to Python or choosing between Python 2 and Python 3? Read Python 2 or Python 3."
+list_words = text.split(" ")
+my_dict_words = {}
+
+for word in list_words:
+	if word in my_dict_words.keys():
+		new_value = my_dict_words[word] + 1
+		my_dict_words.update({word: new_value})
+	else:
+		my_dict_words.update({word: 1})
+
+for key, value in my_dict_words.items():
+	print(key,":",value)
