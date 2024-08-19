@@ -33,8 +33,11 @@ class Farm:
 		self.name = name
 		self.animals_list = {}
 	
-	def add_animal(self, name, quantity=2):
-		self.animals_list[name] = quantity
+	def add_animal(self, name, quantity=1):
+		if name in self.animals_list.keys():
+			self.animals_list[name] += quantity
+		else:
+			self.animals_list[name] = quantity
 	
 	def get_info(self):
 		print(f'{self.name}\'s farm\n\n')
