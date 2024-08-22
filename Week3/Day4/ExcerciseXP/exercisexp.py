@@ -4,7 +4,7 @@ from datetime import datetime,date
 import random
 import string
 # from typing import Any
-from faker import Faker
+# from faker import Faker
 
 
 class Currency:
@@ -34,7 +34,11 @@ class Currency:
         return self.__str__()
     
     def __iadd__(self, num2):
-        self.amount = self.amount.__add__(num2)
+        try:
+            self.amount += num2.amount
+            
+        except:    
+            self.amount += num2
         return self.amount
     
     def __repr__(self):
@@ -57,7 +61,7 @@ print(int(c1))
 print(repr(c1))
 # '5 dollars'
 
-print(c1.amount + 5)
+print(c1 + 5)
 # 10
 
 print(c1 + c2)
@@ -66,11 +70,11 @@ print(c1 + c2)
 print(c1()) 
 # 5 dollars
 
-c1.amount += 5 
+c1 += 5 
 print(c1)
 # 10 dollars
 
-c1.amount += c2.amount
+c1 += c2
 print(c1())
 # 20 dollars
 
