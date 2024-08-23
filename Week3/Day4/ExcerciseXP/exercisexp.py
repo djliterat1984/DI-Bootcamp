@@ -3,8 +3,7 @@
 from datetime import datetime,date
 import random
 import string
-# from typing import Any
-# from faker import Faker
+from faker import Faker
 
 
 class Currency:
@@ -36,10 +35,10 @@ class Currency:
     def __iadd__(self, num2):
         try:
             self.amount += num2.amount
-            
         except:    
             self.amount += num2
-        return self.amount
+        finally:
+            return self
     
     def __repr__(self):
       	return self.__str__()
@@ -67,7 +66,7 @@ print(c1 + 5)
 print(c1 + c2)
 # 15
 
-print(c1()) 
+print(c1) 
 # 5 dollars
 
 c1 += 5 
@@ -119,7 +118,7 @@ print(new_string)
 
 def current_date():
     today = date.today()
-    print(f'Today is {today.month} {today.day},{today.year}')
+    print(f'Today is {today.strftime("%B")} {today.day},{today.year}')
 
 current_date()
 
@@ -177,9 +176,6 @@ fake = Faker()
 users = []
 
 # 3.Create a function that adds new dictionaries to the users list. Each user has the following keys: name, adress, langage_code. Use faker to populate them with fake data.
-
-print(fake.name)
-
 
 def add_user(name,adress,language_code):
     user = {'name':name,'adress': adress,'language_code':language_code}
