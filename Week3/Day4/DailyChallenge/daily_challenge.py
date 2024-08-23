@@ -13,9 +13,13 @@
 # Be able to put them in a list and sort them
 # Bonus (not mandatory) : Install the Turtle module, and draw the sorted circles
 
-circles = []
+from operator import attrgetter
+import turtle
+
 class Circle:
 	PI = 3.14
+	circles = []
+	sorted_circles = []
 
 	def __init__(self, radius = 0, diameter = 0):
 		if radius == 0 and diameter == 0:
@@ -50,22 +54,19 @@ class Circle:
 		return self.radius == circle2.radius
 	
 	def add_to_list(self, *args):
-			circles.append(self)
+			global sorted_circles
+			Circle.circles.append(self)
 			for circle in args:
-				circles.append(circle)
+				Circle.circles.append(circle)
 			
-			sorted(circles, key=lambda circle: circle.radius)
+			sorted_circles = sorted(Circle.circles, key=attrgetter('radius'))
 			i = 1
-			for circle in circles:
+			for circle in sorted_circles:
 				print(f"circle num {i} has radius: {circle.radius}")
 				i+=1
 			
-			
-
-	
-
-circle1 = Circle(4)
-circle2 = Circle(5)
+circle1 = Circle(80)
+circle2 = Circle(50)
 
 print("Circle 1 area: ", circle1.get_area())
 
@@ -76,3 +77,10 @@ print("new circle radius: ",new_circle.radius)
 print(circle1.__is_bigger__(circle2))
 print(circle1.__are_equals__(circle2))
 circle1.add_to_list(circle2)
+
+s = turtle.getscreen()
+t = turtle.Turtle()
+for circle in sorted_circles:
+	t.circle(circle.radius)
+	t.clear()
+
