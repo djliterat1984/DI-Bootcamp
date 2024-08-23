@@ -26,8 +26,8 @@ class Currency:
             if self.currency == num2.currency:
                 amount2 = int(num2.amount)
                 return self.amount.__add__(amount2)
-            # else:
-            #     raise TypeError("Cannot add between Currency type <dollar> and <shekel>")
+            else:
+                raise TypeError("Cannot add between Currency type <dollar> and <shekel>")
     
     def __call__(self):
         return self.__str__()
