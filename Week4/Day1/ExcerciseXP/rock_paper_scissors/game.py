@@ -63,4 +63,4 @@ class Game:
 			return 'paper'
 
 # game = Game()
-# game.play()
+# game.play(

@@ -4,6 +4,7 @@ def get_user_menu_choice():
 	print("MENU")
 	print('(g) Play a new game')
 	print('(x) Show scores and exit')
+	print('(q) Quit')
 
 	user_selection = input('Select an option: ')
 	return user_selection.lower()
