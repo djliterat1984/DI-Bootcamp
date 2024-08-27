@@ -1,0 +1,29 @@
+Instructions
+Part 1 : Quizz :
+Answer the following questions
+
+1.What is a class?
+A Class is a model of something that can have properties, attributes and functions.
+
+2.What is an instance?
+An instance is the action of creating an object with all the characteristics of the class.
+
+3.What is encapsulation?
+Encapsulation is the concept to prevent data from direct modification. There is possible to restrict access to methods and variables.
+
+4.What is abstraction?
+Abstraction is the action by which complexities are hidden and only the features relevant to the user are highlighted.
+
+5.What is inheritance?
+Inheritance is when you create a new Class and it has/receives the same functions and attributes of another class, but the new class adds new attributes or functions.
+
+6.What is multiple inheritance?
+It is the same like inheritance, but the new class created, receive the attributes and the functions for 2 or more classes.
+
+7.What is polymorphism?
+Polymorphism means different or related classes can use the same names for their functions.
+
+8.What is method resolution order or MRO?
+MRO is a concept used in inheritance. It is the order in which a method is searched for in a classes hierarchy. This is important basically when class has multiple inheritance. First, the method is searched in the class of the object. If it’s not found, it is searched in the immediate class declared. Example:  
+def class C(B, A) ==> the MRO would be C -> B -> A.
+
