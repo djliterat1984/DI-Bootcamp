@@ -28,6 +28,13 @@ json_file = "file.json"
 with open(json_file, 'w') as file_obj:
     json.dump(family, file_obj, indent = 2)
 
+user = {
+  'name': "diego",
+  'lastname': 'literat'   
+}
+
+user.get('hobby',)
+
     
 
       
