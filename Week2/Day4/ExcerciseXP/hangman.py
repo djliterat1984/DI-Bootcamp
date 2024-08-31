@@ -3,7 +3,12 @@ import random
 wordslist = ['correction', 'childish', 'beach', 'python', 'assertive', 'interference', 'complete', 'share', 'credit card', 'rush', 'south']
 word = random.choice(wordslist) 
 selected_letters = []
-hidden_word = "*"*len(word)
+hidden_word = ''
+for w in word:
+	if w.isspace():
+		hidden_word += " "
+	else:
+		hidden_word += "*"
 
 def addLetterToSelectedLetters(letter):
 	selected_letters.append(letter)
@@ -12,10 +17,10 @@ def get_letter():
 	guess_letter = input("Choose a letter: ")
 	if guess_letter.isdigit():
 		print("Invalid entry")
-		get_letter()
+		return None
 	elif guess_letter in selected_letters:
 		print("You did that already")
-		get_letter()
+		return None
 	else:
 		return guess_letter
 
@@ -26,9 +31,12 @@ def check_letter(letter):
 
 def show_letter(letter):
 	positions_letter = []
-	for i in word:
-		if i == letter:
-			positions_letter.append(word.index(i))
+	index = 0
+	length_word = len(word)
+	while index < length_word:
+		if word[index] == letter:
+			positions_letter.append(index)
+		index+=1
 
 	update_word = ""
 	global hidden_word
@@ -59,7 +67,12 @@ def play():
 	print(hidden_word)
 	global wrong_guesses
 	while wrong_guesses < 6:
-		letter = get_letter()
+		is_new_letter = False
+		while is_new_letter == False:
+			letter = get_letter()
+			if letter != None:
+				is_new_letter = True
+
 		success = check_letter(str(letter))
 		if success:
 			show_letter(letter)
