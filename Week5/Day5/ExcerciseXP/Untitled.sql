@@ -1,7 +1,7 @@
 -- EXERCISE 1
 
 -- 1.Get a list of all the languages, from the language table.
--- SELECT name FROM language
+-- SELECT * FROM language
 
 -- 2.Get a list of all films joined with their languages – select the following details : film title, 
 --   description, and language name.
@@ -12,7 +12,7 @@
 -- 3.Get all languages, even if there are no films in those languages – select the following details : 
 --   film title, description, and language name.
 -- SELECT film.title, film.description, language.name from film
--- FULL JOIN language
+-- RIGHT JOIN language
 -- ON film.language_id = language.language_id
 
 -- 4.Create a new table called new_film with the following columns : id, name. Add some new films to the table.
@@ -45,6 +45,7 @@
 --  last_update timestamp,
 --  FOREIGN KEY (film_id) REFERENCES new_film (id) ON DELETE CASCADE,
 --  FOREIGN KEY (language_id) REFERENCES language (language_id)
+-- 	CHECK (score > 0 AND score <= 10)
 -- )
 
 -- 6.Add 2 movie reviews. Make sure you link them to valid objects in the other tables.
@@ -78,15 +79,12 @@
 -- DROP TABLE IF EXISTS customer_review; It didn't need extra checking because it is not the father from another row table.
 -- 4.Find out how many rentals are still outstanding (ie. have not been returned to the store yet).
 
--- SELECT film.film_id, inventory.store_id FROM film
--- LEFT JOIN inventory
--- ON film.film_id = inventory.film_id
--- GROUP BY inventory.store_id, film.film_id
+SELECT * FROM rental WHERE (return_date IS NULL) 
 
--- -- WHERE film.film_id NOT IN (inventory.film_id)
-
--- select * from inventory
 -- 5.Find the 30 most expensive movies which are outstanding (ie. have not been returned to the store yet)
+
+
+
 -- 6.Your friend is at the store, and decides to rent a movie. He knows he wants to see 4 movies, but he can’t remember their names. Can you help him find which movies he wants to rent?
 -- 		1.The 1st film : The film is about a sumo wrestler, and one of the actors is Penelope Monroe.
 SELECT film.film_id, film.title, film.description, actor.actor_id FROM film_actor
