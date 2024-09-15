@@ -28,3 +28,5 @@ def run_query(query):
     results = cursor.fetchall()
     connection.close()
     return results
+
+run_query()
