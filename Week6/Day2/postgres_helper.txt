@@ -1,0 +1,379 @@
+Installing virtualenv
+Installing virtualenv can be done with pip
+
+$ pip install virtualenv
+
+
+How to use virtualenv
+First, we need to create a virtual env, this can be done with:
+
+Syntax
+
+python<version> -m venv <virtual-environment-name>
+
+
+$ python3 -m venv my_environment
+
+
+What happened after you run this command ?
+
+A new directory with your requested name (ie. here it’s my_environment) was created
+
+
+Activating virtualenv
+And then we just need to activate it by running:
+
+On Unix:
+
+$ source my_environment/bin/activate
+
+Notice that your shell prompt has changed. It indicates which virtualenv is currently active.
+
+Now you are ready to install packages and use them
+
+
+
+Deactivating virtualenv
+$ deactivate
+
+
+
+
+
+
+Connecting to a database in Python
+Connecting to a database in Python has a few parts.
+
+First, install the appropriate library. Psycopg2 for PostgreSQL.
+
+pip install psycopg2
+
+
+Then import it into your python code:
+
+import psycopg2
+
+
+Next, we need to define the appropriate connection details, for example:
+
+HOSTNAME = 'localhost'
+USERNAME = 'postgres'
+PASSWORD = 'letmein'
+DATABASE = 'dvdrental'
+
+
+Using those details, we can now create a connection object:
+
+connection = psycopg2.connect(host=HOSTNAME, user=USERNAME, password=PASSWORD, dbname=DATABASE )
+
+
+5. From the connection object, we can get a cursor. Think of this as the place that runs your queries, kind like the pgAdmin query tool.
+
+cursor = connection.cursor()
+
+
+Now we can define our query:
+
+query = "SELECT * FROM customer LIMIT 20;"
+
+
+And submit it to the cursor to execute it:
+
+cursor.execute(query)
+
+
+The cursor now contains a result set. We need to fetch it into Python memory. This will give us a list of results:
+
+results = cursor.fetchall()
+
+
+And now you can close your database connection, or make another request:
+
+connection.close()
+
+
+You can process the results object however you like:
+
+for item in results:
+        print(item)
+
+
+Full Example
+Install psycopg2
+For Windows
+pip install psycopg2
+
+For Mac
+pip install psycopg2-binary
+
+
+import psycopg2
+
+# 1. Connect to the database
+
+DB_NAME = "hollywood"
+USER = "postgres" 
+PASSWORD = "postgres" 
+HOST = "localhost"
+PORT = "5432" # or 5433
+
+# 3. Write an SQL query
+def create_table(table_name: str): 
+    """create new table with id, num"""
+
+    query = f'''
+    create table {table_name}(
+        id serial primary key,
+        num integer not null
+    );
+    '''
+    cursor.execute(query) # execute the query
+    connection.commit() # make changes in the database
+
+def insert_into_table(table_name: str, num_value: int):
+
+    query = f'''
+    insert into {table_name}(num)
+    values
+    ({num_value})
+    '''
+    cursor.execute(query) # execute the query
+    connection.commit() # make changes in the database
+
+def select_all(table_name: str):
+
+    query = f'''
+    select * from {table_name};
+    '''
+
+    cursor.execute(query)
+    output = cursor.fetchall()
+    return output
+
+
+
+if __name__ == '__main__':
+
+    try:
+        connection = psycopg2.connect(
+            dbname = DB_NAME,
+            user = USER,
+            password = PASSWORD,
+            host = HOST,
+            port = PORT
+        )
+    except Exception as e:
+        print(f"Error: {e}")
+
+    # 2. Create a cursor object
+    cursor = connection.cursor()
+
+    table_name = 'new_table3'
+
+    create_table(table_name)
+
+    insert_into_table(table_name, 12312)
+    insert_into_table(table_name, 88888)
+
+    print(select_all(table_name))
+
+    # 4. Close database connection
+
+    connection.close()
+
+
+
+Loading fake data using fake2db
+Install fake2db using pip: pip install fake2db.
+
+Then use it to create a fake database:
+
+fake2db --rows 1500 --db postgresql --name learning --username ... --password ...
+
+
+
+SQLite
+SQLite is a C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine.
+
+SQLite is the most used database engine in the world. SQLite is built into all mobile phones and most computers and comes bundled inside countless other applications that people use every day.
+
+You can use SQLite with Python without using any other dependency. See here for details.
+
+
+
+SQLite is a simple relational database system, which saves its data in regular data files
+
+Download and install “MySQL Connector”:
+
+C:\Users\Your Name\AppData\Local\Programs\Python\Python36-32\Scripts>python -m pip install mysql-connector
+
+
+To test if the installation was successful, or if you already have “MySQL Connector” installed, create a Python page with the following content:
+
+demo_mysql_test.py:
+
+import mysql.connector
+
+
+To use a database, you have to create first a connection object.
+The connection object will represent the database.
+
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="yourusername",
+  passwd="yourpassword"
+)
+
+print(mydb)
+
+
+Create a Database
+Now you can start querying the database using SQL statements.
+
+To create a database in MySQL, use the “CREATE DATABASE” statement:
+
+Create a database named “mydatabase”:
+
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="yourusername",
+  passwd="yourpassword"
+)
+
+mycursor = mydb.cursor()
+
+mycursor.execute("CREATE DATABASE mydatabase")
+
+
+Try connecting to the database “mydatabase”:
+
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="yourusername",
+  passwd="yourpassword",
+  database="mydatabase"
+)
+
+
+Create a table
+To create a table in MySQL, use the “CREATE TABLE” statement.
+Create a table named “customers”:
+
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="yourusername",
+  passwd="yourpassword",
+  database="mydatabase"
+)
+
+mycursor = mydb.cursor()
+
+mycursor.execute("CREATE TABLE customers (name VARCHAR(255), address VARCHAR(255))")
+
+
+Insert
+Insert a record in the “customers” table:
+
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="yourusername",
+  passwd="yourpassword",
+  database="mydatabase"
+)
+
+mycursor = mydb.cursor()
+
+sql = "INSERT INTO customers (name, address) VALUES (%s, %s)"
+val = ("John", "Highway 21")
+mycursor.execute(sql, val)
+
+mydb.commit()
+
+print(mycursor.rowcount, "record inserted.")
+
+
+Select
+Select all records from the “customers” table, and display the result:
+
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="yourusername",
+  passwd="yourpassword",
+  database="mydatabase"
+)
+
+mycursor = mydb.cursor()
+
+mycursor.execute("SELECT * FROM customers")
+
+myresult = mycursor.fetchall()
+
+for x in myresult:
+  print(x)
+
+
+Where
+Select record(s) where the address is “Park Lane 38”: result:
+
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="yourusername",
+  passwd="yourpassword",
+  database="mydatabase"
+)
+
+mycursor = mydb.cursor()
+
+sql = "SELECT * FROM customers WHERE address ='Park Lane 38'"
+
+mycursor.execute(sql)
+
+myresult = mycursor.fetchall()
+
+for x in myresult:
+  print(x)
+
+
+Order by
+Use the ORDER BY statement to sort the result in ascending or descending order.
+The ORDER BY keyword sorts the result ascending by default. To sort the result in descending order, use the DESC keyword.
+
+Example : Sort the result alphabetically by name:
+
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="yourusername",
+  passwd="yourpassword",
+  database="mydatabase"
+)
+
+mycursor = mydb.cursor()
+
+sql = "SELECT * FROM customers ORDER BY name"
+
+mycursor.execute(sql)
+
+myresult = mycursor.fetchall()
+
+for x in myresult:
+  print(x)
+
+
+Exercise
+Using the class Database: find a way to dump it into a file and restore in a new database.
