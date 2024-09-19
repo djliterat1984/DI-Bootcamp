@@ -45,3 +45,4 @@ else if ( wordBad > wordNot )
 	console.log( newSentence );
 }
 
+

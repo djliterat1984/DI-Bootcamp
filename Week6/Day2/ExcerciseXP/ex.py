@@ -14,16 +14,24 @@ import psycopg2
 HOSTNAME = 'localHost'
 USERNAME = 'postgres'
 PASSWORD = 'dl210684#'
-DATABASE = 'dvdrental'
+DATABASE = 'restaurantMenu'
+PORT = 5434
 
-connection = psycopg2.connect(host=HOSTNAME, user=USERNAME, password=PASSWORD, dbname=DATABASE)
-print(connection)
+connection = psycopg2.connect(host=HOSTNAME, user=USERNAME, password=PASSWORD, dbname=DATABASE, port=PORT)
+cursor = connection.cursor()
 
+def create_table(table_name:str):
+	query = f'''
+			CREATE TABLE {table_name}(
+				item_id SERIAL PRIMARY KEY,
+				item_name VARCHAR(30) NOT NULL,
+				item_price SMALLINT DEFAULT 0
+			);
+			'''
+	cursor.execute(query) # execute the query
+	connection.commit() # make changes in the database
 
-
-
-
-
+create_table('menu_items')
 
 # 2.In the file menu_item.py, create a new class called MenuItem, the attributes should be the name and price of each item.
 
