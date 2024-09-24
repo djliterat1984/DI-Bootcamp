@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<!-- <p id='text'>DOM Attributes! Yeahhh !!</p> -->
+
+	<!-- <form id="myform"></form>
+	<input type="text" name="name" value="John">
+	<input type="text" name="surname" value="Smith">
+	<input type="submit">
+	</form> -->
+
+	<!-- <form>
+		<label for="age">Age 10</label>
+		<input type="radio" name="age" value="10">
+		<label for="age">Age 20</label>
+		<input type="radio" name="age" value="20">
+	</form> -->
+
+		<select id="musicgenre" multiple></select>
+			<option value="blues" selected>Blues</option>
+			<option value="rock" selected>Rock</option>
+			<option value="classic">Classic</option>
+		</select>
+
+	<script>
+
+		// let form = document.forms[ 0 ];
+		// let ageElems = form.elements.age;
+		// console.log( ageElems )
+		// // RadioNodeList(2)
+		// //  0: input
+		// //  1: input
+		// //  length: 2
+		// console.log( ageElems[ 0 ].value ); // "10"
+
+		//get the select form
+		let dropdown = document.getElementById( 'musicgenre' )
+
+		// get all selected values from multi-select
+		let selected = Array.from( dropdown.options )
+			.filter( option => option.selected )
+			.map( option => option.value );
+		console.log( selected ); //["blues","rock"]
+
+		//add new option to the option list, set it as selected
+
+		let option = new Option( 'newoption', 'newoption', true, true )
+		let select = document.getElementById('musicgenre')
+		select.add( option )
+
+		// get all selected values from multi-select
+
+		selected = Array.from( dropdown.options )
+			.filter( option => option.selected )
+			.map( option => option.value );
+		console.log( selected ); //["blues","rock","newoption"]
+
+
+		// document.getElementById( 'myform' ).addEventListener( 'submit', function ( event )
+		// {
+		// 	event.preventDefault(); // Prevent the default form submission
+
+		// 	// Retrieve form data
+		// 	let formData = new FormData( event.target );
+
+		// 	// Iterate over form data and log each value
+		// 	formData.forEach( function ( value, key )
+		// 	{
+		// 		console.log( `${ key }: ${ value }` );
+		// 	} );
+		// } );
+
+		// const element = document.getElementById( 'text' )
+		// element.style.fontSize = '40'
+		// element.style.color = 'red'
+		// element.style.textShadow = '40'
+	</script>
+</body>
+
+</html>

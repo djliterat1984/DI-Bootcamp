@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<form id="form1" onsubmit="getValue()">
+		<label>First name: </label><input type="text" name="fname" value="David"><br>
+		<label>Last name: </label><input type="text" name="lname" value="BenGurion"><br>
+		<input type="submit" value="Submit">
+	</form>
+	<script>
+
+		let form = document.forms[0]
+		form.addEventListener("submit", function getValue(event){
+			event.preventDefault();
+
+
+			let firstName = form.elements[ 'fname' ].value
+			let lastName = form.elements[ 'lname' ].value
+
+			alert( firstName + ' ' + lastName )
+			console.log( 'First Name', firstName );
+			console.log( 'Last Name', lastName );
+
+		})
+	</script>
+</body>
+
+</html>

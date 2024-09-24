@@ -10,28 +10,37 @@
 		# item_price : SMALLINT DEFAULT 0
 
 import psycopg2
+from menu_item import MenuItem
+from menu_manager import MenuManager
 
-HOSTNAME = 'localHost'
-USERNAME = 'postgres'
-PASSWORD = 'dl210684#'
-DATABASE = 'restaurantMenu'
-PORT = 5434
-
-connection = psycopg2.connect(host=HOSTNAME, user=USERNAME, password=PASSWORD, dbname=DATABASE, port=PORT)
-cursor = connection.cursor()
-
-def create_table(table_name:str):
+def create_table(table_name):
+		
+	HOSTNAME = 'localHost'
+	USERNAME = 'postgres'
+	PASSWORD = 'dl210684#'
+	DATABASE = 'restaurantMenu'
+	PORT = 5434
+	connection = psycopg2.connect(host=HOSTNAME, user=USERNAME, password=PASSWORD, dbname=DATABASE, port=PORT)
+	connection.autocommit = False
+	cursor = connection.cursor()
 	query = f'''
-			CREATE TABLE {table_name}(
-				item_id SERIAL PRIMARY KEY,
-				item_name VARCHAR(30) NOT NULL,
-				item_price SMALLINT DEFAULT 0
-			);
-			'''
+		CREATE TABLE {table_name}(
+			item_id SERIAL PRIMARY KEY,
+			item_name VARCHAR(30) NOT NULL,
+			item_price SMALLINT DEFAULT 0
+		);
+		'''
 	cursor.execute(query) # execute the query
-	connection.commit() # make changes in the database
+	connection.commit()
+	connection.close()
 
 create_table('menu_items')
+item = MenuItem("Shnitzel", 30)
+item.save()
+item.delete()
+item.update('Veggie Burger', 37)
+item2 = MenuManager.get_by_name("Beef Stew")
+items = MenuManager.all_items()
 
 # 2.In the file menu_item.py, create a new class called MenuItem, the attributes should be the name and price of each item.
 
