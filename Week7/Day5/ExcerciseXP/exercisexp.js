@@ -368,11 +368,15 @@ let allBooks = [
 ]
 
 let book1 = document.createElement( 'p' );
+if (allBooks[ 0 ].alreadyRead)
+	book1.style.color = 'red'
 book1.innerHTML = `${ allBooks[ 0 ].title } written by ${ allBooks[ 0 ].author }`
 let newDiv1 = document.createElement( 'div' ).appendChild(book1)
 document.getElementsByClassName( 'listBooks' )[ 0 ].appendChild( newDiv1)
 
 let book2 = document.createElement( 'p' );
+if (allBooks[ 1 ].alreadyRead)
+	book1.style.color = 'red'
 book2.innerHTML = ( `${ allBooks[ 1 ].title } written by ${ allBooks[ 1 ].author }` )
 let newDiv2 = document.createElement( 'div' ).appendChild(book2)
 document.getElementsByClassName( 'listBooks' )[ 0 ].appendChild( newDiv2 )
