@@ -15,7 +15,8 @@ def get_next_holiday(country):
 		if h_date > today:
 			left_time = h_date - today
 			return f'The next holiday is {h_name} eve in {left_time.days} days'
-			
+
+print(f'Today is {date.today()}')	
 print(get_next_holiday('AR'))
 
 # Exercise 2 : How Old Are You On Jupiter?
@@ -32,7 +33,48 @@ print(get_next_holiday('AR'))
 		# Uranus: orbital period 84.016846 Earth years
 		# Neptune: orbital period 164.79132 Earth years
 
+earth_days_year = 365.25
+earth_seconds_year = 31557600
+mercury_year = 0.2408467 
+venus_year = 0.61519726 
+mars_year = 1.8808158 
+jupiter_year = 11.862615 
+saturn_year = 29.447498 
+uranus_year = 84.016846 
+neptune_year = 164.79132
 
+def get_age_in_planet(earth_age, planet_year):
+	return round(earth_age * planet_year, 2)
+
+def get_all_ages_in_planets(age):
+	earth_age = round(age/earth_seconds_year,2)
+	mercury_age = get_age_in_planet(earth_age,mercury_year)
+	venus_age = get_age_in_planet(earth_age,venus_year)
+	mars_age = get_age_in_planet(earth_age,mars_year)
+	jupiter_age = get_age_in_planet(earth_age,jupiter_year)
+	saturn_age = get_age_in_planet(earth_age,saturn_year)
+	uranus_age = get_age_in_planet(earth_age,uranus_year)
+	neptune_age = get_age_in_planet(earth_age,neptune_year)
+
+	planet_ages = {
+		'earth':earth_age, 
+		'mercury': mercury_age,
+		'venus':venus_age,
+		'mars': mars_age,
+		'jupiter': jupiter_age,
+		'saturn': saturn_age,
+		'uranus': uranus_age,
+		'neptune': neptune_age
+	}
+
+	return planet_ages
+
+age = 1000000000
+planet_ages = get_all_ages_in_planets(age)
+
+for k,v in planet_ages.items():
+	print(f'{k}: {v}')
+	
 # Exercise 3 : Regular Expression #1
 # Instructions
 # Hint: Use the RegEx (module)
@@ -42,8 +84,13 @@ print(get_next_holiday('AR'))
 # Example
 
 # return_numbers('k5k3q2g5z6x9bn') 
-# Excepted output : 532569
+# Expected output : 532569
 
+import re
+
+word = 'k5k3q2g5z6x9bn'
+numbers = re.findall('[0-9]', word)
+print(numbers)
 
 # Exercise 4 : Regular Expression #2
 # Instructions
@@ -54,6 +101,9 @@ print(get_next_holiday('AR'))
 		# The name should contain only one space.
 		# The first letter of each name should be upper cased.
 
+name = "John Doe"
+isValid = re.find
+print(isValid)
 
 # Exercise 5: Python Password Generator
 # Instructions

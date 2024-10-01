@@ -5,6 +5,32 @@
 		# Each of the subclasses should have a method which can convert the temperture to another type.
 		# You must consider different designs and pick the best one according to the SOLID Principle.
 
+class Temperature:
+	def __init__(self):
+		pass
+
+class Celsius(Temperature):
+	def convertTo(temperature, type:str):
+		if type.lower() == 'kelvin':
+			kelvinTemp = temperature * 1
+		else:
+			fahrenheitTemp = temperature * 1
+			
+class Kelvin(Temperature):
+	def convertTo(temperature, type:str):
+		if type.lower() == 'celsius':
+			kelvinTemp = temperature * 1
+		else:
+			fahrenheitTemp = temperature * 1
+
+class Fahrenheit(Temperature):
+	def convertTo(temperature, type:str):
+		if type.lower() == 'kelvin':
+			kelvinTemp = temperature * 1
+		else:
+			fahrenheitTemp = temperature * 1
+
+
 
 # Exercise 2: In the Quantum Realm
 # Instructions

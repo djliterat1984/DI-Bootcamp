@@ -367,18 +367,19 @@ let allBooks = [
 	}
 ]
 
-let book1 = document.createElement( 'p' );
-if (allBooks[ 0 ].alreadyRead)
-	book1.style.color = 'red'
-book1.innerHTML = `${ allBooks[ 0 ].title } written by ${ allBooks[ 0 ].author }`
-let newDiv1 = document.createElement( 'div' ).appendChild(book1)
-document.getElementsByClassName( 'listBooks' )[ 0 ].appendChild( newDiv1)
-
-let book2 = document.createElement( 'p' );
-if (allBooks[ 1 ].alreadyRead)
-	book1.style.color = 'red'
-book2.innerHTML = ( `${ allBooks[ 1 ].title } written by ${ allBooks[ 1 ].author }` )
-let newDiv2 = document.createElement( 'div' ).appendChild(book2)
-document.getElementsByClassName( 'listBooks' )[ 0 ].appendChild( newDiv2 )
+for ( let i = 0; i < allBooks.length; i++ ){
+	let book = allBooks[ i ]
+	let details = document.createElement( 'p' );
+	if (book.alreadyRead)
+		details.style.color = 'red'
+	details.innerHTML = `${ book.title } written by ${ book.author }`
+	let detailsDiv = document.createElement( 'div' ).appendChild( details )
+	let imageBook = document.createElement( 'img' );
+	imageBook.src = book.image;
+	imageBook.style.width = '100px'
+	let imgDiv = document.createElement( 'div' ).appendChild( imageBook )
+	document.getElementsByClassName( 'listBooks' )[ 0 ].appendChild( detailsDiv )
+	document.getElementsByClassName( 'listBooks' )[ 0 ].appendChild( imgDiv )
+}
 
 
