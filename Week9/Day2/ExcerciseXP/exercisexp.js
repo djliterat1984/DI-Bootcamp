@@ -3,7 +3,7 @@
 // Analyse the code below, and predict what will be the value of a in all the following functions.
 // Write your prediction as comments in a js file. Explain your predictions.
 // #1
-function funcOne() {
+function funcOne () {
     let a1 = 5;
     if(a1 > 1) {
         a1 = 3;
@@ -162,7 +162,18 @@ console.log('hola1');
 // Create a Navbar in your HTML file.
 // In your js file, create a self invoking function that takes 1 argument: the name of the user that just signed in.
 // The function should add a div in the nabvar, displaying the name of the user and his profile picture.
+let userName = 'Diego';
 
+( function ( name ) {
+    let divName = document.createElement( 'div' );
+    divName.innerHTML = name;
+    let photoProfile = document.createElement( 'img' );
+    photoProfile.src = './photoprofile.png'
+    photoProfile.style.height = '90px'
+    let nav = document.getElementById( 'navBar' )
+    nav.append( divName )
+    nav.append(photoProfile)
+} )(userName);
 
 // 🌟 Exercise 8 : Juice Bar
 // Instructions
