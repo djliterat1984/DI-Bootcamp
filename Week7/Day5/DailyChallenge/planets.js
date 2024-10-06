@@ -11,23 +11,29 @@
 //    Be careful, each planet has a certain amount of moons. How should you display them?
 //    Should you still use an array for the planets ? Or an array of objects ?
 
-const planets = [ 'Marte', 'Jupiter', 'Tierra', 'Venus','Saturno','Neptuno' ]
+const planets = [ 'Mercury', 'Venus', 'Earth', 'Mars','Jupiter','Saturn', 'Uranus', 'Neptune' ]
 let i = 1
-planets.forEach( planet =>
-{
+planets.forEach( planet => {
 	let newDiv = document.createElement( 'div' )
 	newDiv.className = 'planet'
 	newDiv.textContent = planet
-
+	newDiv.style.fontSize = '24px'
+	newDiv.style.display = 'flex'
+	newDiv.style.justifyContent = 'center'
+	newDiv.style.alignItems = 'center'
+	
 	switch (i) {
 		case 1:
 			newDiv.style.backgroundColor = 'red'
+			newDiv.style.color = 'white'
 			break;
 		case 2:
 			newDiv.style.backgroundColor = 'green'
+			newDiv.style.color = 'white'
 			break;
 		case 3:
 			newDiv.style.backgroundColor = 'blue'
+			newDiv.style.color = 'white'
 			break;
 		case 4:
 			newDiv.style.backgroundColor = 'yellow'
@@ -46,9 +52,6 @@ planets.forEach( planet =>
 			break;
 		case 8:
 			newDiv.style.backgroundColor = 'pink'
-			break;
-		case 9:
-			newDiv.style.backgroundColor = 'violet'
 			break;
 		default:
 			newDiv.style.backgroundColor = 'white'
