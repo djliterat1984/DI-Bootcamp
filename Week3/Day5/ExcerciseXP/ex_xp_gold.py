@@ -1,8 +1,3 @@
-# What you will learn:
-# Classes/Objects
-# Files
-
-
 # Exercise 1 : Restaurant Menu Manager
 # Instructions
 # Description: Create a restaurant menu management system for a manager. The program should allow the manager to view the menu, add an item and delete an item.
@@ -73,7 +68,6 @@
 
 # 6.Here’s an example of the menu shown to the user:
 
-# Exercise Menu Manager
 
 
 

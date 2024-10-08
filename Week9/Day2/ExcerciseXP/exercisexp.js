@@ -175,7 +175,7 @@ let userName = 'Diego';
     nav.append(photoProfile)
 } )(userName);
 
-// 🌟 Exercise 8 : Juice Bar
+// Exercise 8 : Juice Bar
 // Instructions
 // You will use nested functions, to open a new juice bar.
 
@@ -197,3 +197,30 @@ let userName = 'Diego';
 // Create a new inner function named displayJuice that displays on the DOM a sentence like The client wants a <size drink> juice, containing <first ingredient>, <second ingredient>, <third ingredient>".
 
 // The client wants 6 ingredients in his juice, therefore, invoke the addIngredients function TWICE. Then invoke once the displayJuice function. Finally, invoke the makeJuice function in the global scope.
+
+
+function makeJuice ( size ) {
+    let ingredients = [];
+    function addIngredients ( ingredient1, ingredient2, ingredient3 ) {
+        ingredients.push( ingredient1 );
+        ingredients.push( ingredient2 );
+        ingredients.push( ingredient3 );
+        console.log( `The client wants a ${ size } juice, containing ${ ingredient1 }, ${ ingredient2 }, ${ ingredient3 }.` );
+    }
+    
+    function displayJuice () {
+        let parag = document.createElement( 'p' )
+        let ingredientsTxt = ''
+        ingredients.forEach( item => ingredientsTxt += item + ', ' );
+        let formattedText = ingredientsTxt.substring(0, ingredientsTxt.length - 2 )
+        
+        parag.textContent = `The client wants a ${ size } juice, containing ${formattedText}.`
+        document.body.append(parag)
+    }
+    
+    addIngredients( 'Banana', 'Strawberry', 'Peach' );
+    addIngredients( 'Apricot', 'Blueberry', 'Kiwi' );
+    displayJuice()
+}
+
+makeJuice('small');
