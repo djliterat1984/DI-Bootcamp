@@ -1,0 +1,44 @@
+body{
+	background-color: rgb(170, 40, 129);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+form{
+	display: flex;
+	justify-content: center;
+	width: 600px;
+	margin-bottom: 30px;
+}
+
+#taskTxt{
+	font-size: medium;
+	height: 30px;
+	width: 70%;
+}
+
+#addBtn{
+	font-size: medium;
+	height: 37px;
+	width: 30%;
+}
+
+h1{
+	font-size: 45px;
+}
+
+.listTasks{
+	display: flex;
+	flex-direction: column;
+	width: 600px;
+	padding: 0;
+	margin: 0;
+	background-color: white;
+}
+
+h3{
+	padding: 0;
+	margin: 0;
+}
