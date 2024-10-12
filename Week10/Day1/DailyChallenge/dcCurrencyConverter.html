@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Currency converter</title>
+</head>
+
+<body style='display: flex; justify-content: center;'>
+	<div style='display: flex; flex-direction: column; justify-content: center; align-items: center; width: 30%;'>
+		<h1>Currency Converter</h1>
+		<h3>From:</h3>
+		<select style='width: 100%;' id='countryFrom' class='codes'></select>
+		<h3>To:</h3>
+		<select style='width: 100%;' id='countryTo' class='codes'></select>
+		<h3>Amount</h3>
+		<div style='display: flex; margin-bottom: 30px; width: 100%; justify-content: center;'>
+			<input style='width: 60%; margin-right: 10px;' id='amountInput' type="text">
+			<input  id='convertBtn' type="submit" value='Convert'>
+		</div>
+		<input style='width: 50%;' id='convertInput' type="text">
+	</div>
+	<script src="dcCurrencyConverter.js"></script>
+</body>
+
+</html>
