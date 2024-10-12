@@ -54,7 +54,7 @@ const setCodes = (codes) => {
 	countryTo.value = defaultCodeTo 
 }
 
-const subscribeToConvertEvent = () => {
+const subscribeToEvents = () => {
 	let convertBtn = document.getElementById( 'convertBtn' )
 	convertBtn.addEventListener( 'click', () => {
 		let amount = document.getElementById( 'amountInput' )
@@ -64,6 +64,17 @@ const subscribeToConvertEvent = () => {
 		let codeTo = countryTo.value.split('-')[0].trim()		
 		convert(codeFrom, codeTo, amount.value)	
 	} )
+	
+	let switchBtn = document.getElementById( 'switchBtn' )
+	switchBtn.addEventListener( 'click', () => {
+		let countryFrom = document.getElementById( 'countryFrom' )
+		let countryTo = document.getElementById( 'countryTo' )
+		let newValue = countryFrom.value
+		countryFrom.value = countryTo.value
+		countryTo.value = newValue
+	} )
+	
+	
 }
 
 const convert = async(codeFrom, codeTo, amount) => {
@@ -77,4 +88,4 @@ const convert = async(codeFrom, codeTo, amount) => {
 }
 
 getCodes()
-subscribeToConvertEvent()
+subscribeToEvents()
