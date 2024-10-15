@@ -38,20 +38,14 @@ getCarHonda(inventory)
 //   { id: 5, car_make: "Honda", car_model: "Accord", car_year: 1995 },
 // ];
 
-const sortCarInventoryByYear = ( carInventory ) => {
-carInventory.sort( ( car1, car2 ) => {
-    if ( car1.car_year < car2.car_year )
-      return -1
-    else if ( car1.car_year > car2.car_year )
-      return 1
-    else
-      return 0
-  } )
-  console.log( carInventory );
-}
-
-sortCarInventoryByYear(inventory)
-
+const sortCarInventoryByYear = ( carInventory => {
+  carInventory.sort( ( car1, car2 ) => {
+    return car1.car_year === car2.car_year ? 0 : car1.car_year > car2.car_year ? 1 : -1;
+  })
+})
+sortCarInventoryByYear( inventory )
+console.log(inventory);
+  
 // The output should be
 
 // [
