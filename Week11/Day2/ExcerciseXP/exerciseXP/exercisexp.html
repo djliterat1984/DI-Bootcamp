@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body style='display: flex;'>
+	<div style='border:solid 2px black; padding: 10px;'>
+		<form action="./exercisexp.html" method="post">
+			<label for='nameInput'>Name</label><br>
+			<input autocomplete='on' type="text" size='37' name='name' id='nameInput'><br><br>
+			<label for="comments">Comments</label><br>
+			<textarea autocomplete='on' name="comments" rows='10' cols='30' id="comments"></textarea><br><br>
+			<input type="submit" value="Send">
+		</form>
+
+		<pre id='jsonContainer'>
+	</pre>
+	</div>
+
+	<img src="./breakpointPause.png" width='100%' height='400px' alt="">
+
+	<script src="./exerciseXp.js"></script>
+</body>
+
+</html>
