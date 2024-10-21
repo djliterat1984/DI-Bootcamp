@@ -1,6 +1,9 @@
 import json
 
+import psycopg2
+
 class MenuManager:
+	#this 3 methods I added to load the json file of items 
 	def __init__(self):
 		json_file = 'restaurant_menu.json'
 		with open(json_file, 'r') as file:
@@ -24,8 +27,7 @@ class MenuManager:
 		json_file = 'restaurant_menu.json'
 		with open(json_file, 'w') as file_obj:
 			json.dump(self.menu, file_obj, indent = 2)
-	
-		
+			
 # menuManager = MenuManager()
 # menuManager.add_item('Pancho', 20)
 # result = menuManager.remove_item('Pancho')

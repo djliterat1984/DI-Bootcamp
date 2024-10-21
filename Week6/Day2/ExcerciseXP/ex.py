@@ -10,8 +10,9 @@
 		# item_price : SMALLINT DEFAULT 0
 
 import psycopg2
-from menu_item import MenuItem
+from menu_editor import show_user_menu
 from menu_manager import MenuManager
+from menu_item import MenuItem
 
 def create_table(table_name):
 		
@@ -34,18 +35,21 @@ def create_table(table_name):
 	connection.commit()
 	connection.close()
 
-create_table('menu_items')
-item = MenuItem("Shnitzel", 30)
-item.save()
-item.delete()
-item.update('Veggie Burger', 37)
-item2 = MenuManager.get_by_name("Beef Stew")
-items = MenuManager.all_items()
+#create_table('menu_items')
+
+# to load all items from exercise week 3 day 5
+# json_file = 'restaurant_menu.json'
+# with open(json_file, 'r') as file:
+# 	menu = json.load(file)	
+# for i in menu['items']:
+# 		item = MenuItem(i['name'], i['price'])
+# 		item.save()
+
 
 # 2.In the file menu_item.py, create a new class called MenuItem, the attributes should be the name and price of each item.
-
+#DONE
 # 3.Create several methods (save, delete, update) these methods will allow a user to save, delete and update items from the Menu_Items table. The update method can update the name as well as the price of an item.
-
+#DONE
 # 4.In the file menu_manager.py, create a new class called MenuManager
 		# 1.Create a Class Method called get_by_name that will return a single item from the Menu_Items table depending on it’s name, if an object is not found (there is no item matching the name in the get_by_name method) return None.
 		# 2.Create a Class Method called all_items which will return a list of all the items from the Menu_Items table.
@@ -55,8 +59,10 @@ items = MenuManager.all_items()
 # item.save()
 # item.delete()
 # item.update('Veggie Burger', 37)
-# item2 = MenuManager.get_by_name('Beef Stew')
-# items = MenuManager.all()
+# item2 = MenuManager.get_by_name('Beef stew')
+# print(item2)
+# items = MenuManager.all_items()
+# print(items)
 
 # Part 2
 # 1.Create a file called menu_editor.py , which will have the following functions:
@@ -67,6 +73,7 @@ items = MenuManager.all_items()
 			# 4.Update an Item (U)
 			# 5.Show the Menu (S)
 			# Call the appropriate function that matches the user’s input.
+
 
 	# 2.add_item_to_menu() - this function should ask the user to input the item’s name and price. This function will not interact with the menu itself, but simply create a MenuItem object and call the appropriate function from the MenuItem object.
 			# If the item was added successfully print a message which states: item was added successfully.
