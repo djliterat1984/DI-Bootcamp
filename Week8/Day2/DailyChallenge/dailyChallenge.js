@@ -6,35 +6,58 @@
 
 // Follow these steps :
 
-// Get the value of each of the inputs in the HTML file when the form is submitted. Remember the event.preventDefault()
-// Make sure the values are not empty
-// Write a story that uses each of the values.
-// Make sure you check the console for errors when playing the game.
-// Bonus: Add a “shuffle” button to the HTML file, when clicked the button should change the story currently displayed (but keep the values entered by the user). The user could click the button at least three times and get a new story. Display the stories randomly.
-// <!DOCTYPE html>
-// <html>
-//  <head>
-//   <meta charset="utf-8" />
-//   <title>Challenge: Mad Libs</title>
-//  </head>
-//  <body>
+// 1.Get the value of each of the inputs in the HTML file when the form is submitted. Remember the event.preventDefault()
+// 2.Make sure the values are not empty
+// 3.Write a story that uses each of the values.
+// 4.Make sure you check the console for errors when playing the game.
+// 5.Bonus: Add a “shuffle” button to the HTML file, when clicked the button should change 
+// the story currently displayed( but keep the values entered by the user ).
+// The user could click the button at least three times and get a new story.Display the stories randomly.
 
-//     <h1>Mad Libs</h1>
+const isWhitespaceString = str => !str.replace(/\s/g, '').length
 
-//     <form id="libform">
-//         <label for="noun">Noun:</label><input type="text" id="noun"><br>
-//         <label for="adjective">Adjective:</label><input type="text" id="adjective"><br>
-//         <label for="person">Someone's Name:</label><input type="text" id="person"><br>
-//         <label for="verb">Verb:</label><input type="text" id="verb"><br>
-//         <label for="place">A place:</label><input type="text" id="place"><br>
-//         <button id="lib-button">Lib it!</button>
-//     </form>
+document.getElementById( 'lib-button' ).addEventListener( 'click', (event) => {
+	event.preventDefault()
+	const {noun,adjective,verb,name, place} = getValues()
+	console.log(noun);
+	
+	const span = document.getElementById( 'story' )	
+	if (hasEmptyInput(noun,verb,adjective,name,place))
+		span.textContent = 'One or more inputs are empties'
+	else
+		span.textContent = `${name} ${adjective} ${verb} a vibrant ${noun} in the ${place}.`	
+} )
 
-//     <p>Generated story: 
-//     <span id="story"></span>
-//     </p>
+document.getElementById( 'shuffleBtn' ).addEventListener( 'click', ( event ) => {
+	event.preventDefault()
+	const {noun,adjective,verb,name, place} = getValues()
+	
+	const span = document.getElementById( 'story' )	
+	if (hasEmptyInput(noun,verb,adjective,name,place))
+		span.textContent = 'One or more inputs are empties'
+	else {
+		const randomNumber = Math.floor(Math.random() * 4) + 1;
+		if(randomNumber === 1)
+			span.textContent = `${ name } ${ adjective } ${ verb } a ${ noun } in the ${ place }.`
+		else if(randomNumber === 2)
+			span.textContent = `${ name } ${ verb } the ${ adjective } ${ noun } on the ${ place }.`
+		else if(randomNumber === 3)
+			span.textContent = `${ name } ${ adjective } ${ verb } a ${ noun } in the ${ place } of the library.`
+		else
+			span.textContent = `${ name } ${ verb } along the ${ place }, admiring the ${ adjective } ${ noun }.`
+	}
+} )
 
-//     <script src="..."></script>
+const hasEmptyInput = (noun, verb,adjective,name,place) => 
+	isWhitespaceString( noun ) == isWhitespaceString( verb ) == isWhitespaceString( adjective ) == isWhitespaceString( name ) == isWhitespaceString( place ) == true
 
-//  </body>
-// </html>
+const getValues = () => {
+	const noun = document.getElementById( 'noun' ).value;
+	const verb = document.getElementById( 'verb' ).value;
+	const adjective = document.getElementById( 'adjective' ).value;
+	const name = document.getElementById( 'person' ).value;
+	const place = document.getElementById( 'place' ).value;
+	
+	return {noun, verb,adjective,name,place}
+}
+
