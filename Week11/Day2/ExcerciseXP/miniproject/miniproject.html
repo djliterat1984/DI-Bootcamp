@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Mini Project</title>
+	<link rel="stylesheet" href="miniproject.css">
+</head>
+
+<body>
+	<div style='display: flex; margin-bottom: 20px;'>
+		<section id='sectionContainer'>
+			<div id='container'>
+				<button id='quoteGenerateBtn'>Generate Quote</button>
+				<p><Span style='font-size: 70px;'>"</Span><Span id='quote'></Span></p>
+				<p id='author'></p>
+				<div>
+					<button id='charsWithSpacesBtn' style='width: 120px; height: 50px; padding: 5px;'>Characters(with
+						spaces)</button>
+					<button id='charsNotSpacesBtn' style='width: 130px; height: 50px; padding: 5px;'>Characters(without
+						spaces)</button>
+					<button id='wordsBtn' style='width: 70px; height: 50px; padding: 5px;'>Words</button>
+					<button id='likeBtn' style='width: 70px; height: 50px; padding: 5px;'>Like</button>
+				</div>
+			</div>
+		</section>
+		<form id='quoteForm' method='post'>
+			<div style='display: flex;'>
+				<label style='margin-right: 10px;' for='quoteInput'>Quote: </label>
+				<textarea name="quoteInput" id="quoteInput" cols="40" rows="5"></textarea>
+			</div><br>
+			<!-- <input style='width: 500px; height: 300px; margin-bottom: 10px;' type="text" name="quoteInput" id="quoteInput"> -->
+			<label for='authorInput'>Author: </label>
+			<input style='width: 350px; margin-bottom: 10px;' type="text" name="authorInput" id="authorInput"><br>
+			<input type="submit" name="" id="addQuoteBtn" value='Add Quote'>
+		</form>
+	</div>
+
+	<form id='searchForm' style='display: flex;' action="" method='post'>
+		<input style='width: 100%; margin-right: 10px;' type="text" id='authorName'>
+		<input type="submit" value="Search">
+	</form>
+
+	<p><Span style='font-size: 70px;'>"</Span><Span id='quoteAuthor'></Span></p>
+	<p id='authorSearch'></p>
+	<button id='prevBtn'>Previous</button>
+	<button id='nextBtn'>Next</button>
+	<script src="./miniproject.js"></script>
+</body>
+
+</html>
