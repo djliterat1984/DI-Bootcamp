@@ -62,10 +62,15 @@ getData('q=sun&rating=g&limit=10&offset=2')
 // The program shouldn’t contain any then() method.
 // Make sure to check the status of the Response and to catch any occuring errors.
 
-const getStarShips = async() => {
-	let response = await fetch( "https://www.swapi.tech/api/starships/9/" )
-	let objectStarWars = await response.json()
-	console.log( objectStarWars );
+const getStarShips = async () => {
+	try {
+		let response = await fetch( "https://www.swapi.tech/api/starships/9/" )
+		let objectStarWars = await response.json()
+		console.log( objectStarWars );
+		
+	} catch (error) {
+		console.log(error);
+	}
 }
 
 getStarShips()
