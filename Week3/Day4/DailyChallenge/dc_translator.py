@@ -6,3 +6,4 @@
 # {"Bonjour": "Hello", "Au revoir": "Goodbye", "Bienvenue": "Welcome", "A bientôt": "See you soon"}
 # You have to recreate the result using a translator module. Take a look at the googletrans module
 
+

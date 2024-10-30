@@ -6,9 +6,29 @@
 		# Name (string)
 		# Age (int)
 		# Score (int)
+
+import operator
+
+
+inputs = []
+i=0
+while i < 5:
+	name = input('Enter Your Name')
+	age = input('Enter Your Age')
+	score = input('Enter Your score')
+	inputTuple = lambda name, age, score : (name,age,score)
+	
+	inputs.append(inputTuple(name,age,score))
+	i += 1
+
 # 2.Build a list of tuples using these inputs, each tuple should contain a name, age and score.
+print(inputs)
+
 # 3.Sort the list by the following priority Name > Age > Score.
 
+inputs.sort(key=operator.itemgetter(0,1,2))
+
+print(inputs)
 # If the following tuples are given as input to the script:
 
 # Tom,19,80
