@@ -5,8 +5,10 @@ menu_manager:MenuManager
 def load_manager():
 	global menu_manager
 	menu_manager = MenuManager()
+	menu_manager.add_new_valentin_day_item()
 	
 def show_user_menu():
+	printHeart()
 	option_selected = ''
 	while(option_selected != 'x'):
 		print('(a) Add an item')
@@ -38,9 +40,23 @@ def remove_item_from_menu():
 		print('The item has been deleted')
 	else:
 		print('Oh No!! There was an error!')
+		
+def printHeart():
+	heart = [ 
+		" ***   *** ",
+		"***** *****",
+		"***********",
+		" ********* ",
+		"   *****   ",
+		"     *     "
+	]
+
+	for line in heart:
+		print(line)
 
 def show_restaurant_menu():
 	print(menu_manager.menu)
 	
-load_manager()
+# load_manager()
 show_user_menu()
+

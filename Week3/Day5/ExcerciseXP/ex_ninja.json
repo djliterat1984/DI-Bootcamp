@@ -1,0 +1,22 @@
+[
+  {
+    "name": "diego",
+    "age": 40,
+    "strength": 15,
+    "dexterity": 11,
+    "constitution": 16,
+    "intelligence": 16,
+    "wisdom": 14,
+    "charisma": 16
+  },
+  {
+    "name": "liby",
+    "age": 40,
+    "strength": 15,
+    "dexterity": 9,
+    "constitution": 8,
+    "intelligence": 12,
+    "wisdom": 18,
+    "charisma": 15
+  }
+]
