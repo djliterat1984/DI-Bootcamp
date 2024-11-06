@@ -1,7 +1,4 @@
-
-
-
-🌟 Exercise 7: Reading and Copying Files
+Exercise 7: Reading and Copying Files
 Instructions
 Create a directory named file-explorer.
 
