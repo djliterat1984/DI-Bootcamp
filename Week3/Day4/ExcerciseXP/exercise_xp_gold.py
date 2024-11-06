@@ -102,7 +102,7 @@ print(numbers)
 		# The first letter of each name should be upper cased.
 
 name = "John Doe"
-isValid = re.find
+isValid = re.search('\D',name)
 print(isValid)
 
 # Exercise 5: Python Password Generator

@@ -100,5 +100,25 @@ print(text2.get_unique_words())
 
 # Note: Feel free to implement/create any attribute, method or function needed to make this work, be creative :)
 
+class TextModification(Text):
+	def __init__(self, text):
+		super().__init__(text)
+		
+	def remove_punctuation(self,text):
+		text_without_punctuation = ''
+		for l in text:
+			if not str(l).isalpha():
+				text_without_punctuation += l
+				
+		return text_without_punctuation
+	
+
+		
 
 
+textModification = TextModification('h')
+textModification.remove_punctuation('.')
+textModification.remove_punctuation(',')
+textModification.remove_punctuation(';')
+textModification.remove_punctuation(':')
+textModification.remove_punctuation('\"')
