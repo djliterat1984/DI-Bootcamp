@@ -61,10 +61,10 @@ app.put( '/products/:id', ( req, res ) => {
 	const { id } = req.params;
 	const { name, price } = req.body
 	
-	const index = products.findIndex( item => item.id == id );
+	const index = products.findIndex( item => item.id == Number(id) );
 	
 	if ( index === -1 ) {
-		return res.status( 404 ).send( 'product to updtae not found' )
+		return res.status( 404 ).send( 'product to update not found' )
 	}
 	
 	products[ index ] = { ...products[ index ], name, price }
