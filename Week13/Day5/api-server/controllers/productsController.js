@@ -1,28 +1,39 @@
 const {products} = require('../models/productsData.js') 
 
 const getAllProducts = ( req, res ) => {
-	res.json(products)
+	try {
+		res.json(products)	
+	} catch (error) {
+		console.log(error);
+	}
 } 
 
 const getProductById = ( req, res ) => {
-	console.log( req.params );
-	const { prod_id } = req.params;
-	const myProd = products.find( item => item.id == Number(prod_id) )
-	if ( !myProd ){
-		return res.status(404).send( 'Product not found' )
+	try {
+		console.log( req.params );
+		const { prod_id } = req.params;
+		const myProd = products.find( item => item.id == Number(prod_id) )
+		if ( !myProd ){
+			return res.status(404).send( 'Product not found' )
+		}
+		res.send(myProd)	
+	} catch (error) {
+		console.log(error);
 	}
-	res.send(myProd)
 }
 
 const addProduct = ( req, res ) => {
-	console.log( req.body );
-	const {name, price} = req.body
-	const newProd = { name, price, id: products.length + 1 } 
-	products.push( newProd );
-	console.log('pushed');
+	try {
+		console.log( req.body );
+		const {name, price} = req.body
+		const newProd = { name, price, id: products.length + 1 } 
+		products.push( newProd );
+		console.log('pushed');
+		res.sendStatus( 201 );	
+	} catch (error) {
+		
+	}
 	
-	// res.send( newProd )
-	res.sendStatus( 201 );
 }
 
 const productSearch = ( req, res ) => {
