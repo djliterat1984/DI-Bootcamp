@@ -11,7 +11,6 @@
 // 4.In app.js, import the express module and create an instance of an Express app.
 import { faker } from '@faker-js/faker';
 import express from 'express'
-
 const app = express()
 
 app.use( express.json() )

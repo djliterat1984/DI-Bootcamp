@@ -1,8 +1,11 @@
-const {products} = require('../models/productsData.js') 
+const {products, getAllProductsDB} = require('../models/productsData.js') 
 
 const getAllProducts = ( req, res ) => {
 	try {
-		res.json(products)	
+		const prodsDB = getAllProductsDB()
+		console.log('========================>', prodsDB);
+		res.end()
+		// res.json(prodsDB)	
 	} catch (error) {
 		console.log(error);
 	}
