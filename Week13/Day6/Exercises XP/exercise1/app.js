@@ -1,5 +1,5 @@
 const express = require( 'express' );
-const routes = require( './routes/index.js' )
+const router = require( './routes/index.js' )
 
 const app = express();
 
@@ -8,7 +8,7 @@ app.listen( PORT, () => {
 	console.log(`run on ${PORT}`);
 } )
 
-app.use('/', routes)
+app.use('/', router)
 
 
 
