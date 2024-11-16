@@ -2,12 +2,8 @@ const express = require( 'express' );
 const routes = express.Router();
 
 const books = [];
-// Get all books
-// Add a new book
-// Update a book by ID
-// Delete a book by ID
 routes.get( '/', ( req, res )=>{
-	res.send(books)
+	res.json(books)
 } )
 
 routes.post( '/', ( req, res ) => {
