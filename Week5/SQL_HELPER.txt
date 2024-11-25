@@ -188,7 +188,7 @@ FROM
 FOREIGN KEY constraint
 CREATE TABLE movies(
 	movie_id SERIAL,
-	movie_title VARCHAR (50) NOT NULL,
+	movie_title a NOT NULL,
 	movie_story TEXT,
 	actor_playing_id INTEGER,
 	PRIMARY KEY (movie_id),
