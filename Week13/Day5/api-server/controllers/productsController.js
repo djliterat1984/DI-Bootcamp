@@ -1,43 +1,57 @@
-const {products, getAllProductsDB} = require('../models/productsData.js') 
+const {
+  getAllProductsDB,
+  getProductByIdDB,
+  insertProductDB,
+} = require("../models/productsData.js");
 
-const getAllProducts = ( req, res ) => {
+const getAllProducts = async( req, res ) => {
 	try {
-		const prodsDB = getAllProductsDB()
+		const prodsDB = await getAllProductsDB()
 		console.log('========================>', prodsDB);
-		res.end()
-		// res.json(prodsDB)	
+		// res.end()
+		res.json(prodsDB)	
 	} catch (error) {
 		console.log(error);
 	}
 } 
 
-const getProductById = ( req, res ) => {
-	try {
-		console.log( req.params );
-		const { prod_id } = req.params;
-		const myProd = products.find( item => item.id == Number(prod_id) )
-		if ( !myProd ){
-			return res.status(404).send( 'Product not found' )
-		}
-		res.send(myProd)	
-	} catch (error) {
-		console.log(error);
-	}
-}
+const getProductById = async (req, res) => {
+  console.log(req.params);
+  const { prod_id } = req.params;
 
-const addProduct = ( req, res ) => {
-	try {
-		console.log( req.body );
-		const {name, price} = req.body
-		const newProd = { name, price, id: products.length + 1 } 
-		products.push( newProd );
-		console.log('pushed');
-		res.sendStatus( 201 );	
-	} catch (error) {
-		
-	}
-	
-}
+  try {
+    const [data] = await getProductByIdDB(prod_id);
+    if (!data) {
+      return res.sendStatus(404);
+    }
+    res.json(data);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+  // const myProd = products.find((item) => item.id == prod_id);
+  // if (!myProd) {
+  //   // return res.status(404).send('not found')
+  //   return res.sendStatus(404);
+  // }
+  // res.send(myProd);
+};
+
+const addProduct = async (req, res) => {
+  console.log(req.body);
+  const { name, price } = req.body;
+  try {
+    const data = await insertProductDB(name, price);
+    res.json(data);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+  // const newProduct = { name, price, id: products.length + 1 };
+  // products.push(newProduct);
+  // //   res.json(products);
+  // res.sendStatus(201);
+};
 
 const productSearch = ( req, res ) => {
 	console.log( req.query );

@@ -6,13 +6,13 @@ const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, PGPORT, PGCONNECTSTRING } = proc
 const db = knex( {
 	client: 'pg',
 	connection: {
-		// connectionString: PGCONNECTSTRING, // se puede usar connectionstring o todas las otras variables
-		host: PGHOST,
+		connectionString: PGCONNECTSTRING, // se puede usar connectionstring o todas las otras variables
+		// host: PGHOST,
 		port: PGPORT,
-		user: PGUSER,
-		password: PGPASSWORD,
-		database: PGDATABASE,
-		// ssl: {rejectUnauthorized:false} // to avoid this error, only in dev , in production we need to delete this line
+		// user: PGUSER,
+		// password: PGPASSWORD,
+		// database: PGDATABASE,
+		ssl: {rejectUnauthorized:false} // to avoid this error, only in dev , in production we need to delete this line
 	}
 } );
 

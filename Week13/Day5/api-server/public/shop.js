@@ -4,6 +4,7 @@ const getAllProducts = async() => {
 		if ( response.ok ) {
 			const result = await response.json();
 			const products = JSON.stringify( result )
+			console.log('products',products);
 			document.getElementById( 'productsContainer' ).innerHTML = products
 		}
 	} catch (error) {

@@ -7,14 +7,21 @@ const products = [
 ]
 
 const getAllProductsDB = () => {
-	db.select( '*' ).from( 'products' )
-		.then( data => {
-			console.log( data );
-			return data;
-	} )
+	return db("products").select("id", "name", "price", "description");
 }
+const getProductByIdDB = (id) => {
+  return db("products")
+    .select("id", "name", "price", "description")
+    .where({ id });
+};
+
+const insertProductDB = (name, price) => {
+  return db("products").insert({ name, price }, ["id", "name", "price"]);
+};
 
 module.exports = {
-	products,
-	getAllProductsDB
-}
+  products,
+  getAllProductsDB,
+  getProductByIdDB,
+  insertProductDB
+};
