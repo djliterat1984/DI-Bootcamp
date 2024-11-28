@@ -6,25 +6,7 @@ const registerNewUserDB = async ( username, pass ) => {
 	const salt = bcrypt.genSaltSync( saltRounds );
 	const trx = await loginApiDb.transaction()
 	try {
-		const exists = await trx( 'hashpwd' ).select( 'id' ).where( { username } )
-		if ( exists )
-			return 'Username already exists'
-		
 		const result = await trx('hashpwd').insert( { username, password: bcrypt.hashSync( pass, salt ) }, 'id' )
-		await trx.commit()
-		return result;
-	} catch ( error ) {
-		await trx.rollback()
-		console.log( error );
-		throw error
-	}
-}
-
-const registerUserDB = async ( firstname, lastname, email, username_Id ) => {
-	const salt = bcrypt.genSaltSync( saltRounds );
-	const trx = await loginApiDb.transaction()
-	try {
-		const result = await trx( 'users' ).insert( { firstname, lastname, email }, 'id' )
 		await trx.commit()
 		return result;
 	} catch ( error ) {
@@ -62,5 +44,4 @@ const loginDB = async ( username, pass ) => {
 module.exports = {
 	registerNewUserDB,
 	loginDB,
-	registerUserDB,
 }

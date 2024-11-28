@@ -4,10 +4,11 @@ const getAllUsersDB = () => {
 	return loginApiDb( 'users' ).select( 'id', 'firstname', 'lastname', 'email')
 }
 
-const getUserByIdDB = ( id ) => {
+const getUserByIdDB = (id) => {
 	return loginApiDb( 'users' )
-		.select( 'id', 'firstname', 'lastname', 'email' )
-		.where( {id} )
+		// .join( 'hashpwd', 'users.username_id', '=', 'hashpwd.id' )
+		.where({id})
+		.select( 'id', 'firstname', 'lastname', 'email')
 }
 
 const updateUserDB = ( id, firstname, lastname, email ) => {

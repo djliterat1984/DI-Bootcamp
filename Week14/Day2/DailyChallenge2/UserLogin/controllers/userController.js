@@ -11,7 +11,7 @@ const getAllUsers = async ( req, res ) => {
 }
 const getUserById = async ( req, res ) => {
 	try {
-		const id  = Number(req.params.id);
+		const { id } = req.params;
 		const data = await getUserByIdDB( id )
 		res.json(data)
 	} catch (error) {
@@ -20,9 +20,8 @@ const getUserById = async ( req, res ) => {
 }
 const updateUser = async ( req, res ) => {
 	try {
-		const id  = Number(req.params.id);
-		const {firstname, lastname} = getUserByIdDB(id)
-		const { email } = req.body;
+		const { id } = req.params;
+		const { firstname, lastname, email } = req.body;
 		const result = await updateUserDB( id, firstname, lastname, email );
 		res.json( result );
 	} catch (error) {
