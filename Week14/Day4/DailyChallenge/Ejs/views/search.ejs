@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<%- include('partials/head'); %>
+		<%- include('partials/header'); %>
+			<%- include('partials/posts'); %>
+				<%- include('partials/footer'); %>
+</head>
+
+<body>
+	<form>
+		<input type="search" name="bytitle" id="">
+	</form>
+
+	<form>
+		<input type="search" name="bycategory" id="">
+	</form>
+
+	<ul>
+		<% for (const item of items ){ %>
+			<li>
+				<%item.title%>
+			</li>
+	</ul>
+
+</body>
+
+</html>
