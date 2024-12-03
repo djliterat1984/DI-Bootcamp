@@ -1,0 +1,27 @@
+.containerdiv{
+	display:flex;
+	flex-direction:column;
+	position: absolute;
+	top: 100px;
+	left: 35%;
+	width: 500px;
+	background-color: white;
+	border-radius: 10px;
+	padding: 20px;
+	justify-content: space-between;
+}
+
+.quoteText{
+	font-size:30px; 
+	font-weight:bold;
+}
+
+.authorTxt{
+	text-align:end;
+}
+
+.newQuoteBtn{
+	align-self: end; 
+	border: solid 1px black;
+	width: fit-content 
+}
