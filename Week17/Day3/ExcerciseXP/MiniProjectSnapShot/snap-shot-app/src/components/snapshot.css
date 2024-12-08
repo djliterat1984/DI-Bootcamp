@@ -1,0 +1,28 @@
+.container{
+	display:flex;
+	width:90%;
+	flex-wrap:wrap;
+	/* background-color:red; */
+	justify-content:space-between;
+	margin-top: 100px;
+}
+
+.imgContainer{
+	width:250px;
+	height:200px;
+	overflow:hidden; 
+	margin: 15px;
+
+}
+
+.image{
+	transition: scale 1.25s;
+	width: 100%;
+	height: 100%;
+	overflow:clip;
+	overflow-clip-margin: content-box;
+}
+
+.image:hover{
+	scale:1.25; 
+}
