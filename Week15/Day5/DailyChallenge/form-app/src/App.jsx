@@ -32,14 +32,22 @@ function App () {
       setLastname( value );
     else if ( name === 'age' )
       setAge( value );
+    else if ( name === 'gender' )
+      setGender(value)
     else if ( name === 'destination' )
       setDestination( value );
-    else if ( name === 'nutsFree' )
-      setIsNutsFree( !isNutsFree );
-    else if ( name === 'lactoseFree' )
-      setIsLactoseFree( !isLactoseFree );
-    else if ( name === 'vegan' )
-      setIsVegan(!isVegan)
+    else if ( name === 'nutsFree' ){
+      const { checked } = e.target;    
+      setIsNutsFree( checked );
+    }
+    else if ( name === 'lactoseFree' ) {
+      const { checked } = e.target;
+      setIsLactoseFree( checked );
+    }
+    else if ( name === 'vegan' ){
+      const { checked } = e.target;
+      setIsVegan( checked )
+    }
   }
 
   return (
@@ -53,15 +61,19 @@ function App () {
         <CheckboxInput
           detail='Male'
           checked={ gender === 'male' }
-          onChange={() => setGender('male')}
+          onChange={ ( event ) => handleChange( event ) }
+          name='gender'
+          value='male'
         /><br />
         
         <CheckboxInput
           detail='Female'
           checked={ gender === 'female' }
-          onChange={() => setGender('female')}
+          onChange={ (event) => handleChange( event ) }
+          name='gender'
+          value='female'
         /><br />
-        ç
+ 
         <Select
           title='Select your destination'
           options={ travelOptions }
