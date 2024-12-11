@@ -1,10 +1,14 @@
 import './App.css'
 import ErrorBoundary from './ErrorBoundary'
 import BuggyCounter from './components/BuggyCounter.jsx'
+import Child from './components/FavoriteColor.jsx'
+import FavoriteColor from './components/FavoriteColor.jsx'
 
 function App() {
    return (
-    <div>
+     <div>
+       {/* <FavoriteColor /> */ }
+       <Child />
       <div className="box" >
         <p style={ { color: 'black' } }><b>Click on the numbers to increase the counters.
           <br />
@@ -28,7 +32,7 @@ function App() {
         </ErrorBoundary>
         <hr />
         <p style={ { color: 'black' } }>This counter is not inside of boundary. So if crashes, all other components are deleted.</p>
-        <BuggyCounter />
+         <BuggyCounter />
       </div>
     </div>
   )
