@@ -1,5 +1,5 @@
 import './App.css'
-import ErrorBoundary from './ErrorBoundary'
+import ErrorBoundary from './ErrorBoundary.jsx'
 import BuggyCounter from './components/BuggyCounter.jsx'
 import Child from './components/FavoriteColor.jsx'
 import FavoriteColor from './components/FavoriteColor.jsx'
