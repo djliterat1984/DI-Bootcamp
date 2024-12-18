@@ -15,11 +15,11 @@ export const AddTask = () => {
 	}
 	
 	return (
-		<div>
-			<input ref={ titleRef } style={ { height: '25px', margin: 0 } } type="text" placeholder='Text' />
-			<input type="checkbox" ref={completedRef}/>
-			<label>Completed</label>
-			<button  onClick={() => handleNewtask()}>Add Task</button>
+		<div style={ { display: 'flex', justifyContent:'center'}}>
+			<input ref={ titleRef } style={ { height: '25px', margin: '10px' } } type="text" placeholder='Text' />
+			<input type="checkbox" style={{margin:'10px'}} ref={completedRef}/>
+			<label style={{margin:'10px'}}>Completed</label>
+			<button  style={{margin:'10px'}} onClick={() => handleNewtask()}>Add Task</button>
 		</div>
 	)
 }

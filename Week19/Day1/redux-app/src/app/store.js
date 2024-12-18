@@ -9,9 +9,9 @@ const appReducer = combineReducers( {
 	usersReducer
 } )
 
-const store = configureStore( {
+const taskStore = configureStore( {
 	reducer: {appReducer}
 } )
 
-export default store;
+export default taskStore;
 
