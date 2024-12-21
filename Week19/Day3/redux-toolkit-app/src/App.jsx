@@ -1,6 +1,6 @@
 import './App.css'
 import { Counter } from './features/counter/Counter'
-import { TasksFeature } from './features/tasks/TasksFeature'
+import { Tasks } from './features/tasks/Tasks'
 
 
 function App() {

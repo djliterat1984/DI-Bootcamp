@@ -14,6 +14,7 @@ const AppMemo = () => {
   
   // const sum = expensiveCalculation( 0 );
   // console.log(sum);
+  // minuto 38
   
   const sum = useMemo( () => {
     const result = expensiveCalculation( 0 );
