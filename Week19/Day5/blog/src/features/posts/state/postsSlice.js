@@ -12,29 +12,16 @@ export const fetchPosts = createAsyncThunk("posts/fetch", async () => {
   return data;
 });
 
-export const fetchPosts2 = createAsyncThunk("posts/fetch", async () => {
-  const result = await axios.get("https://jsonplaceholder.typicode.com/posts");
-  return result.data;
-});
-
 const postsSlice = createSlice({
   name: "posts",
   initialState,
 	reducers: {
-		add: ( state, action ) => {
-			const id = action.payload.id - 1;
-			const emojiName = action.payload.emoji;
-			
-			if ( emojiName === 'thumbsUp' )
-				state.posts[ id ].thumbsUpCount += 1;
-			else if ( emojiName === 'wow' )
-				state.posts[ id ].wowCount += 1;
-			else if ( emojiName === 'rocket' )
-				state.posts[ id ].rocketCount += 1;
-			else if ( emojiName === 'coffee' )
-				state.posts[ id ].coffeeCount += 1;
-			else if ( emojiName === 'heart' )
-				state.posts[ id ].heartCount += 1;
+		addReaction: ( state, action ) => {
+			const { id, name } = action.payload;
+			const post = state.posts.find( ( item ) => item.id === id);
+      if (post) {
+        post.reactions[name]++;
+      }
     },
 	},
   extraReducers(builder) {
@@ -44,9 +31,18 @@ const postsSlice = createSlice({
 				state.status = "loading";
 			} )
 			.addCase( fetchPosts.fulfilled, ( state, action ) => {
-				state.status = "success";
-				const resultPosts = action.payload;
-				state.posts = resultPosts.map( item => { return { post: item, thumbsUpCount: 0, wowCount: 0, heartCount: 0, rocketCount: 0, coffeeCount: 0 } } ); 
+				state.status = "success";			
+				const loadedPosts = action.payload.map( (item) => {
+					item.reactions = {
+            thumbsUp: 0,
+            wow: 0,
+            heart: 0,
+            rocket: 0,
+            coffee: 0,
+          };
+					return item
+				} ); 
+				state.posts = loadedPosts;
 			})
 			.addCase( fetchPosts.rejected, ( state, action ) => {
 				console.log('error');
@@ -55,5 +51,7 @@ const postsSlice = createSlice({
   },
 });
 
-export const { add } = postsSlice.actions;
+export const state = (state) => state.postsReducer;
+
+export const { addReaction } = postsSlice.actions;
 export default postsSlice.reducer;

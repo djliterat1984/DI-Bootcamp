@@ -1,19 +1,18 @@
 import React, { useEffect } from 'react'
-import { useSelector,useDispatch } from "react-redux";
-import { fetchPosts } from './state/postsSlice';
-
-import './posts.css';
+import { usePostsSelector, useStatusSelector, useFetchPosts } from './state/hooks';
 import { Article } from './Article';
 
+import './posts.css';
+
 export const PostsList = (props) => {
-	
-	const dispatch = useDispatch()
+	const posts = usePostsSelector();
+	const status = useStatusSelector();
+	const callFetchPosts = useFetchPosts();
+
 	useEffect(() => {
-		dispatch( fetchPosts() );
+		callFetchPosts();
 	}, [])
 	
-	const posts = useSelector( state => state.postsReducer.posts );
-	const status = useSelector( state => state.postsReducer.status );
 	
 	if ( status == 'loading' )
 		return 'loading....'
@@ -23,7 +22,7 @@ export const PostsList = (props) => {
 				<h1>Posts</h1>
 				{ posts.map( ( item ) => {
 					return (
-						<Article item={item} />
+						<Article post={item} />
 					)
 				} ) }
 			

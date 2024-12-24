@@ -1,8 +1,15 @@
-create new react app: npx create-react-app <my-app>
+**create new react app: npx create-react-app <my-app>
 											npm create vite@latest <my-react-app> -- --template react
 
 
-to resolve cors problem:
+**to resolve cors problem:
 
 1)install cors => nom i cors
 2)add => app.use( cors())
+
+** install redux and reduxtoolkit:
+
+npm i redux react-redux @reduxjs/toolkit
+
+
+
