@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import { add, update, remove, updateDate } from '../features/state/taskDaySlice';
+import { add, update, remove, updateDate } from './state/taskDaySlice';
 import AddTask from './AddTask';
 import EditButton from './EditButton';
 import RemoveButton from './RemoveButton';
