@@ -1,26 +1,25 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux';
 import BookSelect from './BookSelect';
-import { filterByGenre } from './state/bookSlice';
 import BooksList from './BooksList';
+import { useBooksSelector, useFilterByGenre, useFilteredBooks } from './state/hooks';
 
 const Books = () => {
-	const selectBooks = useSelector( state => state.bookReducer.books );
-	const filteredBooks = useSelector( state => state.bookReducer.filtered );
-	const dispatch = useDispatch();
-	
+    const books = useBooksSelector();
+    const filteredBooks = useFilteredBooks();
+    const callFilterByGenre = useFilterByGenre();
+    
 	return (
 		<div>
 			<h3>books</h3>
 			<BookSelect
 				selectedValue={ filteredBooks.currentGenre }
-				onSelectBook={ ( selectedOption ) => { dispatch( filterByGenre( selectedOption ) ) } }
+				onSelectBook={ ( selectedOption ) => { callFiçlterByGenre(selectedOption) } }
 			/>
 			{
 				filteredBooks.books.length > 0 ?
 					<BooksList bookList={ filteredBooks.books } />
 					:
-					<BooksList bookList={selectBooks} />
+					<BooksList bookList={books} />
 			}	
 		</div>
 	)

@@ -31,14 +31,13 @@ const bookSlice = createSlice({
 			const currentGenre = action.payload;
 			state.filtered = {books, currentGenre}
 		},	
-    // active: (state, action) => {
-    //   const book = state.books.find((book) => book.id === action.payload);
-    //   if (task) {
-    //     task.active = !task.active;
-    //   }
-    // },
   },
-});
+} );
+
+export const state = (state) => state.bookReducer
+export const books = ( state ) => state.bookReducer.books;
+export const category = ( state ) => state.bookReducer.filtered.currentGenre;
+export const filteredBooks = ( state ) => state.bookReducer.filtered;
 
 export const { add, remove, filterByGenre } = bookSlice.actions;
 export default bookSlice.reducer;

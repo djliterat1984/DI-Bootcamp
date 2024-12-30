@@ -2,7 +2,6 @@ import React from 'react'
 
 const BooksList = ( props ) => {
 	const { bookList } = props;
-	console.log(bookList);
 	
 	return (
 		bookList.map( item => {
@@ -12,9 +11,9 @@ const BooksList = ( props ) => {
 				<h5>{item.title} - </h5>
 				<h5>{ item.author} </h5>
 				{
-					item.genre.map( g => {
+					item.genre.map( (g,index) => {
 						return (
-							<h5>- {g}</h5>
+							<h5 key={index}>- {g}</h5>
 						)
 					} )
 				}
