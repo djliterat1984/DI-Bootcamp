@@ -24,11 +24,14 @@ class ErrorBoundary extends React.Component {
         if (this.state.hasError) {
             // You can render any custom fallback UI
             return (
-                <details style={{ whiteSpace: 'pre-wrap' , backgroundColor:'black'}}>
-                    {this.state.error && this.state.error.toString()}
-                    <br />
-                    {this.state.errorInfo.componentStack}
-                </details>
+                <>
+                    <h2 style={{color:'black'}}>Something went wrong</h2>    
+                    <details style={{ whiteSpace: 'pre-wrap' , backgroundColor:'black'}}>
+                        {this.state.error && this.state.error.toString()}
+                        <br />
+                        {this.state.errorInfo.componentStack}
+                    </details>
+                </>
             )
         }
 

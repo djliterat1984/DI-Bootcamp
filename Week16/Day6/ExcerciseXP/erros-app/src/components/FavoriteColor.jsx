@@ -1,69 +1,64 @@
 import React, { Component } from 'react';
 
-// class FavoriteColor extends Component {
-// 	state = {
-// 		favouriteColor: 'red',
-// 		show:true
-// 	}
-// 	shouldComponentUpdate ( nextProps, nextState ) { return true }
-	
-// 	componentDidMount () {
-// 		console.log(this.state.favouriteColor);
-		
-// 		this.setState({favouriteColor: 'yellow'})
-// 	}
-	
-// 	componentDidUpdate () {
-// 		console.log(this.state.favouriteColor);
-// 		console.log( "after update" );
-// 	}
-	
-// 	getSnapshotBeforeUpdate () {
-// 		console.log( "in getSnapshotBeforeUpdate" );
-// 		return { favouriteColor: this.state.favouriteColor }
-// 	}
-	
-// 	handleClicked = () => {
-// 		this.setState({favouriteColor: 'blue'})
-// 	}
-	
-
-	
-// 	render() {
-// 		return (
-// 			<div>
-// 				<header style={{color:'black'}}>My favourite color is { this.state.favouriteColor }</header>
-// 				<button onClick={this.handleClicked}>Change to blue</button>
-// 			</div>
-// 		);
-// 	}
-
-// }
-
-class Child extends Component {
-	
+class FavoriteColor extends Component {
 	state = {
 		favouriteColor: 'red',
-		show:true
+		show: true,
+	}
+	shouldComponentUpdate ( nextProps, nextState ) { return true }
+	
+	componentDidMount () {
+		setTimeout(() => {
+			this.setState({favouriteColor: 'yellow'})
+		},3000);
 	}
 	
-	componentWillUnmount () {
-		alert( 'component will unMount' );
+	componentDidUpdate () {
+		console.log( "after update" );
 	}
 	
+	getSnapshotBeforeUpdate () {
+		console.log( "in getSnapshotBeforeUpdate" );
+		return null;
+	}
+	
+	handleClicked = () => {
+		this.setState({favouriteColor: 'blue'})
+	}
+	
+		
 	handleClick = () => {
 		this.setState( {show:false} )
+	}
+	
+	render() {
+		return (
+			<div>
+				<header style={{color:'black'}}>My favourite color is { this.state.favouriteColor }</header>
+				<button onClick={ this.handleClicked }>Change to blue</button>
+				{ this.state.show && <Child show={this.state.show} />}
+				 <button onClick={this.handleClick}>Delete Header</button>
+			</div>
+		);
+	}
+
+}
+
+
+export class Child extends Component {
+	
+	componentWillUnmount () {
+		alert( 'The component named Header is about to be unmounted' );
 	}
 	
 	render () {
 			return (
 				<>
-					{ this.state.show && <header style={ { color: 'black' } }>Hello World { this.state.favouriteColor }</header> }
-					<button onClick={this.handleClick}>Delete Header</button>
+					<header style={ { color: 'black' } }>Hello World</header>
 				</>
 			);
 	}
 }
 
 
-export default Child;
+export default FavoriteColor;

@@ -1,15 +1,13 @@
 import './App.css'
 import ErrorBoundary from './ErrorBoundary.jsx'
 import BuggyCounter from './components/BuggyCounter.jsx'
-import Child from './components/FavoriteColor.jsx'
+import {Child} from './components/FavoriteColor.jsx'
 import FavoriteColor from './components/FavoriteColor.jsx'
 
 function App() {
    return (
-     <div>
-       {/* <FavoriteColor /> */ }
-       <Child />
-      <div className="box" >
+     <>
+      <div style={{marginBottom:'20px'}} className="box" >
         <p style={ { color: 'black' } }><b>Click on the numbers to increase the counters.
           <br />
           The counter is programmed to throw error when it reaches 5. This simulates a JavaScript error in a component.
@@ -34,7 +32,8 @@ function App() {
         <p style={ { color: 'black' } }>This counter is not inside of boundary. So if crashes, all other components are deleted.</p>
          <BuggyCounter />
       </div>
-    </div>
+       <FavoriteColor />
+    </>
   )
 }
 
