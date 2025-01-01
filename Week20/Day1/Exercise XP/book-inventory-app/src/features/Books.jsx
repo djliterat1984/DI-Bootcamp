@@ -13,7 +13,7 @@ const Books = () => {
 			<h3>books</h3>
 			<BookSelect
 				selectedValue={ filteredBooks.currentGenre }
-				onSelectBook={ ( selectedOption ) => { callFiçlterByGenre(selectedOption) } }
+				onSelectBook={ ( selectedOption ) => { callFilterByGenre(selectedOption) } }
 			/>
 			{
 				filteredBooks.books.length > 0 ?
