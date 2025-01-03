@@ -18,10 +18,6 @@ const bookSlice = createSlice({
 				author: action.payload.author,
 				genres: action.payload.genres
       });
-
-      // state.tasks = state.tasks.sort(
-      //   (a, b) => new Date(a.duedate) - new Date(b.duedate)
-      // );
     },
     remove: (state, action) => {
       state.books = state.books.filter((book) => book.id !== action.payload);

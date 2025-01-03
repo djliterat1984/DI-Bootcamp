@@ -1,10 +1,11 @@
-import './App.css'
+// import './App.css'
+import Tasks from './features/Tasks'
 
 function App() {
 
   return (
     <>
-      
+      <Tasks />
     </>
   )
 }
