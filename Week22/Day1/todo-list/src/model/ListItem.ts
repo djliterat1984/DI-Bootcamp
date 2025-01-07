@@ -1,32 +1,45 @@
-import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from 'uuid';
+import type { UUIDTypes } from 'uuid';
 
-interface ItemI {
+export interface ListItemI {
 	id: UUIDTypes;
 	item: string;
 	checked: boolean;
 }
-import type { UUIDTypes } from 'uuid';
 
-export class Item implements ItemI {
-	id: UUIDTypes;
-	item: string;
-	checked: boolean;
+
+export default class ListItem implements ListItemI {
+	private _id: UUIDTypes;
+	private _item: string;
+	private _checked: boolean;
 	
-	constructor(item:string) {
-		this.item = item
-		this.id = uuidv4();
-		this.checked = false;
+	constructor(id:UUIDTypes, item:string, checked:boolean) {
+		this._item = item
+		this._id = id;
+		this._checked = checked;
 	}
 	
-	setItemChecked () {
-		this.checked = !this.checked;
+	get id (): UUIDTypes{
+		return this._id;
+	}
+	set id (val:UUIDTypes){
+		this._id = val;
 	}
 	
-	getItem (): [UUIDTypes,string,boolean]{
-		return [
-			this.id,
-			this.item,
-			this.checked
-		];
+	get item (): string{
+		return this._item;
+	}
+	
+	
+	set item ( val: string ) {
+		this._item = val;
+	}
+	
+	get checked (): boolean{
+		return this._checked;
+	}
+	
+	set checked (val:boolean) {
+		this._checked = val;
 	}
 }
