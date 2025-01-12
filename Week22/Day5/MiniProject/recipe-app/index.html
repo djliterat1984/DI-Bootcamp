@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" />
+	<style>
+	</style>
+	<title>Recipe Book</title>
+	<script type="module" src="/src/main.ts" defer></script>
+</head>
+
+<body>
+	<main>
+		<div id="app">
+			<form id='inputForm' name='formInputs'>
+				<input id='nameInput' type='text' placeholder='Recipe name' />
+				<textarea id='ingredientsInput' placeholder='Ingredients (separate by dash line)'></textarea>
+				<textarea id='instructionsInput' placeholder='Instructions (separate by dash line)'></textarea>
+				<input type='submit' value='Add' id='submit' title="Add new item" />
+			</form>
+			<div id='recipeTitleContainer'>
+				<h1>Recipes</h1>			
+				<button id='clearBtn'>Clear</button>
+			</div>
+			
+			<div id='divRecipes'>
+				<!-- <div style='border: 2px rgb(47, 46, 46) solid; width: 30%; border-radius: 25px; padding: 0px 10px;'>
+					<button style='position: sticky; '>Favorite</button>
+					<h2
+						style='background-color: rgb(231, 232, 232); border-radius: 10px; display: flex; align-items: center; justify-content: center;'>
+						Classic Margherita Pizza
+						<button style='margin-left: 20px;color: red; border: none; outline: none ;' class="material-symbols-outlined">
+						  favorite
+						</button>
+					</h2>
+					<h3>Ingredients: </h3>
+					<ul style='background-color: rgb(179, 178, 178); border-radius: 10px;'>
+						<li>Pizza dough</li>
+						<li>Tomato sauce</li>
+						<li>Fresh mozzarella cheese"</li>
+						<li>Fresh basil leaves</li>
+						<li>Olive oil</li>
+						<li>Salt and pepper to taste</li>
+					</ul>
+					<h3>Instructions: </h3>
+					<ol type="1" style='background-color: rgb(187, 187, 187);border-radius: 10px;'>
+						<li>"Preheat the oven to 475°F (245°C)."</li>
+						<li>"Roll out the pizza dough and spread tomato sauce evenly."</li>
+						<li>"Top with slices of fresh mozzarella and fresh basil leaves."</li>
+						<li>"Drizzle with olive oil and season with salt and pepper."</li>
+						<li>"Bake in the preheated oven for 12-15 minutes or until the crust is golden brown."</li>
+						<li>"Slice and serve hot."</li>
+
+					</ol>
+				</div>-->
+			</div> 
+		</div>
+	</main>
+
+</body>
+
+</html>

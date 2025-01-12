@@ -21,6 +21,7 @@ export default class ListTemplate implements DomList{
 	}
 	render ( fullList: FullList ): void {
 		this.clear();
+		console.log(fullList._items);
 		
 		fullList._items.forEach( (item, index) => {
 			const li = document.createElement( 'li' ) as HTMLLIElement;
@@ -40,6 +41,7 @@ export default class ListTemplate implements DomList{
 			const label = document.createElement( 'label' ) as HTMLLabelElement;
 			label.textContent = item.item;
 			label.htmlFor = ( index + 1 ).toString();
+			li.appendChild(label)
 			
 			const button = document.createElement( 'button' ) as HTMLButtonElement;
 			button.textContent = "X";
@@ -50,6 +52,8 @@ export default class ListTemplate implements DomList{
 				fullList.removeItem( item.id.toString() );
 				this.render( fullList );
 			} )
+			
+			this._ul.appendChild(li)
 		} )
 	}
 }
