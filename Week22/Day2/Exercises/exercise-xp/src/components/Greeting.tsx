@@ -2,13 +2,13 @@ import React, { type ReactElement, type ReactNode } from 'react'
 
 interface greetingProps {
 	name: string;
-	messaggeCount: number;
+	messageCount: number;
 }
 
-const Greeting = ( { name, messaggeCount} :greetingProps):ReactNode => {
+const Greeting = ( { name, messageCount} :greetingProps):ReactNode => {
 	return (
 		<div>
-			<h2>{ name } { messaggeCount}</h2>
+			<h2>{ name } { messageCount}</h2>
 		</div>
 	)
 }
