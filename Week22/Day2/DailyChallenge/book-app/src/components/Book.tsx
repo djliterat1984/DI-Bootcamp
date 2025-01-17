@@ -25,7 +25,7 @@ const Book = (): ReactNode => {
         }
     };
 
-    useEffect(() => {
+    useEffect((): void => {
         loadData();
     }, []);
 
